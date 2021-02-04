@@ -1,0 +1,13 @@
+streamlit
+sklearn
+pandas
+numpy
+bs4
+xgboost
+requests
+
+
+
+
+
+

@@ -25,7 +25,10 @@ df.dropna(inplace=True ,axis=0)
 df =df.reset_index(drop=True)
 for col in ["kilometre" ,"price"]:
     for i in range(0 ,len(df[col])):
-        df[col][i] = "".join(re.sub(r'[^\w]|km| |TL', '' ,df[col][i]))
+
+        df[col][i] = "".join(re.sub(r'[^\w]|km|USD|TL', '' ,df[col][i]))
+
+
     df[col ] =df[col].astype(int)
 
 
@@ -110,8 +113,8 @@ class_obj=xgboost.XGBRegressor()
 from sklearn.model_selection import cross_val_score ,KFold, GroupKFold
 from sklearn.model_selection import train_test_split
 fold = KFold(n_splits=5)
-score = cross_val_score(class_obj ,df ,y ,cv = fold ,scoring="neg_root_mean_squared_error")
-print(f"score : {score.mean()}")
+#score = cross_val_score(class_obj ,df ,y ,cv = fold ,scoring="neg_root_mean_squared_error")
+#print(f"score : {score.mean()}")
 
 class_obj.fit(df ,y)
 
@@ -123,7 +126,7 @@ pickle_all("class_obj" ,class_obj)
 pickle_all("class_obj" ,class_obj)
 pickle_all("encode_list" ,encode_list)
 pickle_all("col_after_endoded_all" ,col_after_endoded_all)
-score.mean()
+#score.mean()
 
 
 

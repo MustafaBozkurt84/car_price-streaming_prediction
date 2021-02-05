@@ -12,7 +12,7 @@ def Convert(a):
     res_dct = dict(zip(it, it))
     return res_dct
 while True:
-    for page in range(1, 6):
+    for page in range(1, 2):
         print(page, end=' ')
         url = "https://www.arabam.com/ikinci-el/otomobil-sahibinden?take=50&page=" + str(page)
 
@@ -50,12 +50,12 @@ while True:
                 df1 = df1.loc[:, ['İlan No:', 'İlan Tarihi:', 'Marka:', 'Seri:', 'Model:', 'Yıl:', 'Yakıt Tipi:',
                                   'Vites Tipi:', 'Motor Hacmi:', 'Motor Gücü:', "Kilometre:", 'car_link:', "price",
                                   "boya_degisen", "aciklama"]]
-                df1.drop_duplicates(axis=0,inplace=True,keep="last")
+                df1.drop_duplicates(inplace=True,keep="last")
 
 
                 df1.to_csv('arabam_stream_.csv', sep=',', index=False)
-
-
+                print(df1.shape)
             except:
                 pass
-    time.sleep(300)
+
+
